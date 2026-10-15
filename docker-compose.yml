@@ -8,7 +8,7 @@ services:
       - models:/models
     restart: "no"
 
-  infer:
+  api:
     build:
       context: .
       dockerfile: Dockerfile.infer
@@ -16,6 +16,11 @@ services:
     depends_on:
       train:
         condition: service_completed_successfully
+      base:
+        condition: service_healthy
+    environment:
+      - REDIS_HOST=base
+      - REDIS_PORT=6379
     volumes:
       - models:/models:ro
     ports:
@@ -25,5 +30,16 @@ services:
       - no-new-privileges:true
     restart: unless-stopped
 
+  base:
+    image: redis:7-alpine
+    volumes:
+      - donnees:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
 volumes:
   models:
+  donnees:
