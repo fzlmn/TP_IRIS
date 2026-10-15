@@ -14,3 +14,4 @@ benchmark.ps1
 *.bak
 logstrivy/
 .dockerignore
+captures/
