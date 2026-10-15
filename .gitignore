@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.joblib
+*.bak
+build_*.log
+.venv/
+venv/
