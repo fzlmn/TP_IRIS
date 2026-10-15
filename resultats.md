@@ -5,9 +5,9 @@
 | Image | Taille | Build à froid | Rebuild après modification |
 |---|---|---|---|
 | iris-train:naive | 582 | 99 | 92 |
-| iris-train:opt | | | |
+| iris-train:opt | 135 | 80 | 5 |
 | iris-infer:naive | 582 | 82 | 84 |
-| iris-infer:opt | | | |
+| iris-infer:opt | 140 | 103 | 13 |
 
 ## Trivy (étape 7)
 
