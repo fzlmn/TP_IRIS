@@ -11,11 +11,14 @@
 
 ## Trivy (étape 7)
 
-| Image | CRITICAL | HIGH |
-|---|---|---|
-| iris-infer:naive | | |
-| iris-infer:opt | | |
+| Image | Paquets Debian | CRITICAL | HIGH |
+|---|---|---|---|
+| iris-infer:naive | 469 | 19 | 405 |
+| iris-infer:opt | 87 | 0 | 44 |
 
 Failles critiques corrigées :
-- CVE-... (bibliothèque ...) : présente dans naive, absente de opt
-- CVE-... (bibliothèque ...) : présente dans naive, absente de opt
+- CVE-2026-44172 (MariaDB : libmariadb3, mariadb-common…, injection SQL) : présente dans naive, absente de opt
+- CVE-2026-50252 (libunbound8, empoisonnement du cache DNS) : présente dans naive, absente de opt
+
+Correction appliquée : passage de python:3.11 à python:3.12-slim. L'image slim n'installe
+que 87 paquets Debian au lieu de 469 ; les bibliothèques vulnérables n'y sont plus du tout.
